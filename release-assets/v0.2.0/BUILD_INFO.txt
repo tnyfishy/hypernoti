@@ -1,0 +1,6 @@
+Application source commit: cb1d3b219e98d2f020ba2aa85776bb57f4f89886
+Version: 0.2.0 (versionCode 2)
+Host validation: assembleDebug succeeded; 24 tests passed, no skipped tests; lint had no errors; APK signature verified.
+UI renders: native Robolectric Android 9, English/Vietnamese resources, light/dark views. Screenshots are simulated renders, not physical HyperOS captures.
+Physical HyperOS validation: not performed.
+Signer SHA-256: 0cf7d690193debd49c91eb39421bb854fbcf6ad4b6c9dc1fbe2ca37ad023a1d4 (same prepared preview signer as 0.1.0).
