@@ -1,0 +1,44 @@
+<resources>
+ <string name="title">HyperNoti</string>
+ <string name="subtitle">FCM setup assistant for HyperOS</string>
+ <string name="limits">Without root, HyperNoti cannot keep Google Play services alive or guarantee FCM delivery. It helps you configure the phone; it does not run a keep-alive service.</string>
+ <string name="google_ok">Google Play services: installed and enabled</string>
+ <string name="google_missing">Google Play services: missing or disabled</string>
+ <string name="google_settings">Google Play services settings</string>
+ <string name="autostart">Open HyperOS autostart settings</string>
+ <string name="battery">Open battery settings</string>
+ <string name="apps">Open app settings</string>
+ <string name="guide">For Google Play services and each app needing notifications: enable autostart where available, choose No restrictions for battery use, allow notifications, and allow background data. If your ROM has a Basic Google services switch, enable it. Menu names vary across HyperOS versions.</string>
+ <string name="check_google">I enabled Google services on this ROM</string>
+ <string name="check_auto">I enabled autostart where available</string>
+ <string name="check_battery">I removed battery restrictions for affected apps</string>
+ <string name="check_notify">I allowed notifications and background data</string>
+ <string name="test">Test real FCM delivery</string>
+ <string name="test_body">From another device or the app’s notification sender, send a push to an affected app. Check once with the screen off, then after at least 15 minutes idle and after reboot. A local notification is not an FCM test. HyperNoti cannot verify delivery to other apps automatically.</string>
+ <string name="fallback">This settings page is unavailable. Open Settings manually using the guide.</string>
+ <string name="progress">Confirmed steps: %1$d / 4. This is a checklist, not proof of FCM delivery.</string>
+ <string name="refresh">Refresh status</string>
+ <string name="advanced">Advanced settings</string>
+ <string name="advanced_scope">Shizuku/root can request a standard Android Doze exemption and allow background app operations for the selected app. Xiaomi autostart is separate: use the HyperOS autostart page. These changes do not guarantee FCM or defeat every HyperOS restriction.</string>
+ <string name="app_list_privacy">Installed application names are displayed only on this device and are not uploaded. Modify system settings is an optional user-granted permission for HyperNoti itself; it does not unlock autostart or grant privileged access.</string>
+ <string name="loading_apps">Loading installed apps…</string>
+ <string name="choose_mode">Choose Shizuku or root. No elevated action runs automatically.</string>
+ <string name="root_mode">Root (requires su/Magisk)</string>
+ <string name="connect_shizuku">Connect / authorize Shizuku</string>
+ <string name="write_settings">Optional: grant modify system settings</string>
+ <string name="selected_settings">Open selected app settings</string>
+ <string name="apply_background">Request background exemption</string>
+ <string name="reset_background">Remove exemption / reset app operation</string>
+ <string name="back">Back</string>
+ <string name="permission_denied">Shizuku permission denied. No changes were made.</string>
+ <string name="shizuku_ready">Shizuku connected. Choose an app and confirm an action.</string>
+ <string name="shizuku_missing">Start Shizuku and grant permission, then connect. Wireless-debugging Shizuku must be restarted after reboot.</string>
+ <string name="connecting">Connecting to Shizuku…</string>
+ <string name="confirm_apply">Add this app to the Android Doze allowlist and set RUN_ANY_IN_BACKGROUND to allow? This may increase battery usage. HyperOS can still restrict the app. Root prompts are handled by your root manager.</string>
+ <string name="confirm_reset">Remove this app from the user Doze allowlist and set RUN_ANY_IN_BACKGROUND to default? This does not restore previous custom settings, and may remove an exemption added by another tool.</string>
+ <string name="executing">Executing explicit request…</string>
+ <string name="verify_device">Inspect all exit codes: one change can succeed while another fails. Test real FCM on your device; command acceptance is not proof of delivery.</string>
+ <string name="language_selector" translatable="false">English / Tiếng Việt</string>
+ <string name="operation_failed_detail">Operation failed\n%1$s</string>
+ <string name="command_result_detail">Command result (exit=0 indicates command acceptance):\n%1$s\n%2$s</string>
+</resources>

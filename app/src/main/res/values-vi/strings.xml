@@ -1,0 +1,43 @@
+<resources>
+ <string name="title">HyperNoti</string>
+ <string name="subtitle">Trợ lý cấu hình FCM cho HyperOS</string>
+ <string name="limits">Không có root, HyperNoti không thể giữ Google Play services luôn sống hay bảo đảm FCM được nhận. Ứng dụng hỗ trợ cấu hình điện thoại; không chạy dịch vụ giữ tiến trình.</string>
+ <string name="google_ok">Google Play services: đã cài và đang bật</string>
+ <string name="google_missing">Google Play services: chưa cài hoặc bị tắt</string>
+ <string name="google_settings">Cài đặt Google Play services</string>
+ <string name="autostart">Mở cài đặt tự khởi động HyperOS</string>
+ <string name="battery">Mở cài đặt pin</string>
+ <string name="apps">Mở cài đặt ứng dụng</string>
+ <string name="guide">Với Google Play services và từng ứng dụng cần thông báo: bật tự khởi động nếu có, chọn Không hạn chế sử dụng pin, cho phép thông báo và dữ liệu nền. Nếu ROM có công tắc Dịch vụ Google cơ bản, hãy bật nó. Tên menu có thể khác giữa các phiên bản HyperOS.</string>
+ <string name="check_google">Tôi đã bật dịch vụ Google trên ROM này</string>
+ <string name="check_auto">Tôi đã bật tự khởi động nếu có</string>
+ <string name="check_battery">Tôi đã bỏ hạn chế pin cho ứng dụng cần thông báo</string>
+ <string name="check_notify">Tôi đã cho phép thông báo và dữ liệu nền</string>
+ <string name="test">Kiểm tra nhận FCM thực tế</string>
+ <string name="test_body">Từ thiết bị khác hoặc hệ thống gửi thông báo của ứng dụng, gửi push đến ứng dụng bị ảnh hưởng. Thử khi tắt màn hình, sau ít nhất 15 phút không sử dụng và sau khi khởi động lại. Thông báo nội bộ không phải bài kiểm tra FCM. HyperNoti không tự xác minh được thông báo của ứng dụng khác.</string>
+ <string name="fallback">Không mở được trang cài đặt này. Hãy mở Cài đặt thủ công theo hướng dẫn.</string>
+ <string name="progress">Đã xác nhận: %1$d / 4 bước. Đây là checklist, không xác nhận FCM hoạt động.</string>
+ <string name="refresh">Kiểm tra lại trạng thái</string>
+ <string name="advanced">Cài đặt nâng cao</string>
+ <string name="advanced_scope">Shizuku/root có thể yêu cầu miễn trừ Doze Android và cho phép thao tác chạy nền cho ứng dụng được chọn. Tự khởi động Xiaomi là cơ chế riêng: dùng trang tự khởi động HyperOS. Các thay đổi không bảo đảm FCM hay vượt qua mọi hạn chế HyperOS.</string>
+ <string name="app_list_privacy">Tên ứng dụng đã cài chỉ hiển thị trên thiết bị, không tải lên mạng. Thay đổi cài đặt hệ thống là quyền tùy chọn do người dùng cấp cho chính HyperNoti; không mở khóa tự khởi động hay quyền đặc biệt.</string>
+ <string name="loading_apps">Đang tải danh sách ứng dụng…</string>
+ <string name="choose_mode">Chọn Shizuku hoặc root. Không tự chạy thao tác nâng quyền.</string>
+ <string name="root_mode">Root (cần su/Magisk)</string>
+ <string name="connect_shizuku">Kết nối / cấp quyền Shizuku</string>
+ <string name="write_settings">Tùy chọn: cấp quyền thay đổi cài đặt hệ thống</string>
+ <string name="selected_settings">Mở cài đặt ứng dụng đã chọn</string>
+ <string name="apply_background">Yêu cầu miễn hạn chế chạy nền</string>
+ <string name="reset_background">Gỡ miễn trừ / đặt thao tác về mặc định</string>
+ <string name="back">Quay lại</string>
+ <string name="permission_denied">Quyền Shizuku bị từ chối. Chưa thay đổi gì.</string>
+ <string name="shizuku_ready">Đã kết nối Shizuku. Chọn ứng dụng và xác nhận thao tác.</string>
+ <string name="shizuku_missing">Hãy khởi chạy Shizuku, cấp quyền rồi kết nối. Shizuku qua gỡ lỗi không dây cần khởi chạy lại sau khi reboot.</string>
+ <string name="connecting">Đang kết nối Shizuku…</string>
+ <string name="confirm_apply">Thêm ứng dụng vào danh sách miễn Doze Android và đặt RUN_ANY_IN_BACKGROUND thành allow? Có thể tăng hao pin. HyperOS vẫn có thể hạn chế ứng dụng. Trình quản lý root sẽ xử lý yêu cầu root.</string>
+ <string name="confirm_reset">Gỡ ứng dụng khỏi danh sách miễn Doze của người dùng và đặt RUN_ANY_IN_BACKGROUND về default? Không khôi phục cài đặt tùy chỉnh trước đó, có thể gỡ miễn trừ do công cụ khác thêm.</string>
+ <string name="executing">Đang thực hiện yêu cầu…</string>
+ <string name="verify_device">Kiểm tra mọi mã thoát: một thay đổi có thể thành công trong khi thay đổi khác thất bại. Hãy thử FCM thật trên máy; lệnh thành công không xác nhận nhận thông báo.</string>
+ <string name="operation_failed_detail">Thao tác thất bại\n%1$s</string>
+ <string name="command_result_detail">Kết quả lệnh (exit=0 nghĩa là lệnh được chấp nhận):\n%1$s\n%2$s</string>
+</resources>
