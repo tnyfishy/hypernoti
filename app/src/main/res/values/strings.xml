@@ -88,4 +88,9 @@
  <string name="advanced_help_detail">%1$s\n\n%2$s</string>
 <plurals name="app_count"><item quantity="one">%1$d app</item><item quantity="other">%1$d apps</item></plurals>
 <string name="shizuku_label" translatable="false">Shizuku</string>
+    <string name="reduce_motion">Reduce motion</string>
+    <string name="reduce_motion_summary">Show sections and pages instantly.</string>
+    <string name="section_expanded">Expanded</string>
+    <string name="section_collapsed">Collapsed</string>
+    <string name="guide_title">Delivery guide</string>
 </resources>

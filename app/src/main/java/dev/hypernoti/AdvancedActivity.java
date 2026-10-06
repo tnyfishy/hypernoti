@@ -89,7 +89,7 @@ public class AdvancedActivity extends UiActivity {
         LinearLayout session = Ui.card(this, content);
         status = Ui.text(this, session, getString(R.string.loading_apps), 14, false);
         status.setTextIsSelectable(true);
-        LinearLayout help = Ui.card(this, content);
+        LinearLayout help = new GlassSection(this,content,R.string.understand_changes,R.drawable.ic_info,"advanced_help",false).body;
         Ui.button(this, help, R.string.understand_changes, R.drawable.ic_info, false, () ->
             new MaterialAlertDialogBuilder(this).setTitle(R.string.understand_changes)
                 .setMessage(getString(R.string.advanced_help_detail, getString(R.string.advanced_scope), getString(R.string.app_list_privacy)))

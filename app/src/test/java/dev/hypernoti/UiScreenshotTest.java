@@ -39,6 +39,7 @@ public class UiScreenshotTest {
         preferences("light");
         try(ActivityController<MainActivity> controller=Robolectric.buildActivity(MainActivity.class).setup()) {
             MainActivity activity=controller.get();snapshot(activity,"home-light-vi");
+            GlassSection device=activity.findViewById(R.id.device_section);device.header.performClick();snapshot(activity,"home-expanded-light-vi");device.header.performClick();
             BottomNavigationView nav=activity.findViewById(R.id.main_navigation);
             nav.setSelectedItemId(R.id.nav_checklist);snapshot(activity,"checklist-light-vi");
             nav.setSelectedItemId(R.id.nav_settings);snapshot(activity,"settings-light-vi");
@@ -49,6 +50,10 @@ public class UiScreenshotTest {
     @Test public void renderDarkHome() throws Exception {
         preferences("dark");
         try(ActivityController<MainActivity> controller=Robolectric.buildActivity(MainActivity.class).setup()){snapshot(controller.get(),"home-dark-vi");}
+    }
+    @Test public void renderEnglishHome() throws Exception {
+        preferences("light");RuntimeEnvironment.getApplication().getSharedPreferences("hypernoti",Context.MODE_PRIVATE).edit().putString("language","en").commit();
+        try(ActivityController<MainActivity> controller=Robolectric.buildActivity(MainActivity.class).setup()){snapshot(controller.get(),"home-light-en");}
     }
     @Test public void renderAdvancedWithoutExecutingCommands() throws Exception {
         preferences("light");

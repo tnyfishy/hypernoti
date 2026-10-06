@@ -30,7 +30,7 @@ final class Ui {
     }
     static LinearLayout root(UiActivity activity) {
         LinearLayout root = column(activity);
-        root.setBackgroundColor(color(activity, com.google.android.material.R.attr.colorSurface));
+        root.setBackground(Glass.backdrop(activity));
         ViewCompat.setOnApplyWindowInsetsListener(root, (view, windowInsets) -> {
             Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout() | WindowInsetsCompat.Type.ime());
             view.setPadding(insets.left, insets.top, insets.right, insets.bottom);
@@ -56,8 +56,7 @@ final class Ui {
         return content;
     }
     static MaterialCardView card(Context context, LinearLayout parent, int color) {
-        MaterialCardView card = new MaterialCardView(context);
-        card.setCardBackgroundColor(color); card.setRadius(dp(context, 16)); card.setCardElevation(0); card.setStrokeWidth(0);
+        MaterialCardView card = Glass.card(context, color);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.bottomMargin = dp(context, 16); parent.addView(card, params); return card;
     }
@@ -91,7 +90,7 @@ final class Ui {
         button.setText(title); button.setAllCaps(false); button.setCornerRadius(dp(context, 24)); button.setMinHeight(dp(context, 48));
         button.setInsetTop(dp(context, 4)); button.setInsetBottom(dp(context, 4));
         if (icon != 0) { button.setIconResource(icon); button.setIconSize(dp(context, 20)); }
-        button.setOnClickListener(view -> action.run());
+        button.setOnClickListener(view -> action.run()); Motion.tactile(button);
         parent.addView(button, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)); return button;
     }
     static LinearLayout setting(Context context, LinearLayout parent, int icon, int title, CharSequence detail, Runnable action) {
@@ -103,7 +102,7 @@ final class Ui {
         if (detail != null && detail.length() > 0) { TextView subtitle = text(context, labels, detail, 13, false); subtitle.setPadding(0,0,0,0); }
         row.addView(icon(context, R.drawable.ic_chevron, color(context, com.google.android.material.R.attr.colorOnSurfaceVariant), 20));
         android.util.TypedValue ripple = new android.util.TypedValue(); context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, ripple, true);
-        row.setBackgroundResource(ripple.resourceId); row.setOnClickListener(view -> action.run());
+        row.setBackgroundResource(ripple.resourceId); row.setOnClickListener(view -> action.run()); Motion.tactile(row);
         parent.addView(row); return row;
     }
 }

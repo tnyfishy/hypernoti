@@ -86,5 +86,10 @@
  <string name="root_label">Root</string>
  <string name="understand_changes">Các thay đổi là gì?</string>
  <string name="advanced_help_detail">%1$s\n\n%2$s</string>
-<plurals name="app_count"><item quantity="one">%1$d ứng dụng</item><item quantity="other">%1$d ứng dụng</item></plurals>
+<plurals name="app_count"><item quantity="other">%1$d ứng dụng</item></plurals>
+    <string name="reduce_motion">Giảm chuyển động</string>
+    <string name="reduce_motion_summary">Hiển thị ngay các mục và trang.</string>
+    <string name="section_expanded">Đã mở rộng</string>
+    <string name="section_collapsed">Đã thu gọn</string>
+    <string name="guide_title">Hướng dẫn nhận thông báo</string>
 </resources>

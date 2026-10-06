@@ -82,9 +82,8 @@ public class MainActivity extends UiActivity {
     private void addNavigation(LinearLayout root) {
         FrameLayout area = new FrameLayout(this);
         root.addView(area, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Ui.dp(this, 100)));
-        MaterialCardView floating = new MaterialCardView(this);
-        floating.setRadius(Ui.dp(this, 24)); floating.setCardElevation(Ui.dp(this, 4)); floating.setStrokeWidth(0);
-        floating.setCardBackgroundColor(Ui.color(this, com.google.android.material.R.attr.colorSurfaceContainer));
+        MaterialCardView floating = Glass.card(this,Ui.color(this, com.google.android.material.R.attr.colorSurfaceContainer));
+        floating.setRadius(Ui.dp(this, 32)); floating.setCardElevation(Ui.dp(this, 3));
         int width = Math.min(Ui.dp(this, 284), getResources().getDisplayMetrics().widthPixels - Ui.dp(this, 32));
         FrameLayout.LayoutParams cardParams = new FrameLayout.LayoutParams(width, Ui.dp(this, 72), Gravity.CENTER);
         area.addView(floating, cardParams);
@@ -113,14 +112,21 @@ public class MainActivity extends UiActivity {
             search.clearFocus();
             ((android.view.inputmethod.InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(search.getWindowToken(),0);
         }
+        int previous=selectedTab;
         selectedTab = TABS[index]; toolbar.setTitle(TITLES[index]);
         if (pages[index] == null) {
             FrameLayout page = new FrameLayout(this); pages[index] = page;
             if (index==0) home(page); else if (index==1) apps(page); else if (index==2) checklist(page); else settings(page);
         }
-        pageContainer.removeAllViews(); pageContainer.addView(pages[index]);
+        if (pages[index].getParent()!=pageContainer) {
+            if(pageContainer.getChildCount()>0)pageContainer.getChildAt(0).animate().cancel();
+            pageContainer.removeAllViews(); pageContainer.addView(pages[index]);
+            Motion.enter(pages[index], index < tabIndex(previous) ? -1 : 1);
+        }
         refresh(); updateProgress();
     }
+
+    private int tabIndex(int id) { for(int i=0;i<TABS.length;i++) if(TABS[i]==id)return i; return 0; }
 
     private void home(FrameLayout page) {
         LinearLayout content = Ui.scrolling(this, page);
@@ -134,7 +140,7 @@ public class MainActivity extends UiActivity {
         googleStatus = Ui.text(this, copy, "", 18, true);
         googleDescription=Ui.text(this, copy, getString(R.string.default_mode), 12, false);
         status.addView(heading);
-        googleCard.setOnClickListener(view -> googleSettings());
+        googleCard.setOnClickListener(view -> googleSettings());Motion.tactile(googleCard);
         LinearLayout metrics = Ui.row(this);
         content.addView(metrics);
         LinearLayout appMetric = metric(metrics, R.drawable.ic_apps, R.string.nav_apps, false);
@@ -147,8 +153,9 @@ public class MainActivity extends UiActivity {
         homeProgress = Ui.text(this,progressCard,"",13,false);
         homeIndicator = indicator(progressCard);
         Ui.button(this,progressCard,R.string.continue_setup,R.drawable.ic_checklist,false,() -> navigation.setSelectedItemId(R.id.nav_checklist));
-        Ui.section(this,content,R.string.device_information);
-        LinearLayout device = Ui.card(this,content);
+        GlassSection deviceSection = new GlassSection(this,content,R.string.device_information,R.drawable.ic_info,"device",false);
+        deviceSection.setId(R.id.device_section);
+        LinearLayout device = deviceSection.body;
         deviceValue(device,R.string.device,Build.MANUFACTURER + " " + Build.MODEL);
         deviceValue(device,R.string.android_version,getString(R.string.android_version_value,Build.VERSION.RELEASE,Build.VERSION.SDK_INT));
         deviceValue(device,R.string.rom,Build.DISPLAY);
@@ -157,22 +164,19 @@ public class MainActivity extends UiActivity {
         Ui.text(this,advanced,getString(R.string.privileged_access),18,true);
         Ui.text(this,advanced,getString(R.string.advanced_short),13,false);
         Ui.button(this,advanced,R.string.advanced,R.drawable.ic_shield,false,() -> advanced(null));
-        LinearLayout limits = Ui.card(this,content);
-        Ui.text(this,limits,getString(R.string.about_delivery),16,true);
+        LinearLayout limits = new GlassSection(this,content,R.string.about_delivery,R.drawable.ic_notification,"delivery",false).body;
         Ui.text(this,limits,getString(R.string.limits),13,false);
     }
 
     private LinearLayout metric(LinearLayout row, int icon, int title, boolean end) {
-        MaterialCardView card = new MaterialCardView(this);
-        card.setRadius(Ui.dp(this,16));card.setCardElevation(0);card.setStrokeWidth(0);
-        card.setCardBackgroundColor(Ui.color(this,com.google.android.material.R.attr.colorSecondaryContainer));
+        MaterialCardView card = Glass.card(this,Ui.color(this,com.google.android.material.R.attr.colorSecondaryContainer));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1);
         params.bottomMargin=Ui.dp(this,16); if (end) params.leftMargin=Ui.dp(this,7); else params.rightMargin=Ui.dp(this,7);
         row.addView(card,params);
         LinearLayout content = Ui.cardContent(this,card,16);
         content.addView(Ui.icon(this,icon,Ui.color(this,com.google.android.material.R.attr.colorOnSurfaceVariant),24));
         Ui.text(this,content,getString(title),14,true);
-        card.setOnClickListener(view -> navigation.setSelectedItemId(end ? R.id.nav_checklist : R.id.nav_apps));
+        card.setOnClickListener(view -> navigation.setSelectedItemId(end ? R.id.nav_checklist : R.id.nav_apps));Motion.tactile(card);
         return content;
     }
 
@@ -201,13 +205,13 @@ public class MainActivity extends UiActivity {
             check.setOnCheckedChangeListener((button,checked) -> {preferences.edit().putBoolean("step_"+index,checked).apply();updateProgress();});
             checkCard.addView(check,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-        Ui.section(this,content,R.string.quick_settings);
-        LinearLayout shortcuts=Ui.cardContent(this,Ui.card(this,content,Ui.color(this,com.google.android.material.R.attr.colorSurfaceContainer)),0);
+        LinearLayout shortcuts=new GlassSection(this,content,R.string.quick_settings,R.drawable.ic_settings,"shortcuts",true).body;
+        shortcuts.setPadding(0,0,0,Ui.dp(this,8));
         Ui.setting(this,shortcuts,R.drawable.ic_language,R.string.google_settings,null,this::googleSettings);
         Ui.setting(this,shortcuts,R.drawable.ic_shield,R.string.autostart,null,() -> open(new Intent().setComponent(new android.content.ComponentName("com.miui.securitycenter","com.miui.permcenter.autostart.AutoStartManagementActivity"))));
         Ui.setting(this,shortcuts,R.drawable.ic_battery,R.string.battery,null,() -> open(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS)));
         Ui.setting(this,shortcuts,R.drawable.ic_apps,R.string.apps,null,() -> open(new Intent(Settings.ACTION_APPLICATION_SETTINGS)));
-        LinearLayout guide=Ui.card(this,content);Ui.text(this,guide,getString(R.string.guide),14,false);
+        LinearLayout guide=new GlassSection(this,content,R.string.guide_title,R.drawable.ic_info,"guide",false).body;Ui.text(this,guide,getString(R.string.guide),14,false);
         Ui.button(this,guide,R.string.test,R.drawable.ic_notification,true,() -> new MaterialAlertDialogBuilder(this).setTitle(R.string.test).setMessage(R.string.test_body).setPositiveButton(android.R.string.ok,null).show());
     }
 
@@ -232,8 +236,8 @@ public class MainActivity extends UiActivity {
 
     private void settings(FrameLayout page) {
         LinearLayout content=Ui.scrolling(this,page);
-        Ui.section(this,content,R.string.appearance_section);
-        LinearLayout appearance=Ui.cardContent(this,Ui.card(this,content,Ui.color(this,com.google.android.material.R.attr.colorSurfaceContainer)),0);
+        LinearLayout appearance=new GlassSection(this,content,R.string.appearance_section,R.drawable.ic_palette,"appearance",true).body;
+        appearance.setPadding(0,0,0,Ui.dp(this,8));
         String language=preferences.getString("language","");
         LinearLayout languageRow=Ui.setting(this,appearance,R.drawable.ic_language,R.string.language,language.equals("vi") ? "Tiếng Việt" : language.equals("en") ? "English" : getString(R.string.system_default),this::languageDialog);
         languageRow.setId(R.id.language_setting);
@@ -245,12 +249,15 @@ public class MainActivity extends UiActivity {
         MaterialSwitch monet=new MaterialSwitch(this);monet.setId(R.id.dynamic_color_setting);monet.setContentDescription(getString(R.string.dynamic_colors));
         monet.setChecked(preferences.getBoolean("dynamic_color",true));monet.setEnabled(Build.VERSION.SDK_INT>=31);
         monet.setOnCheckedChangeListener((view,checked) -> {preferences.edit().putBoolean("dynamic_color",checked).apply();recreate();});dynamic.addView(monet);appearance.addView(dynamic);
-        Ui.section(this,content,R.string.privileged_access);
-        LinearLayout access=Ui.cardContent(this,Ui.card(this,content,Ui.color(this,com.google.android.material.R.attr.colorSurfaceContainer)),0);
+        LinearLayout motion=Ui.row(this);motion.setPadding(Ui.dp(this,16),Ui.dp(this,8),Ui.dp(this,16),Ui.dp(this,12));
+        LinearLayout motionCopy=Ui.column(this);motion.addView(motionCopy,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1));
+        Ui.text(this,motionCopy,getString(R.string.reduce_motion),16,true);Ui.text(this,motionCopy,getString(R.string.reduce_motion_summary),13,false);
+        MaterialSwitch reduce=new MaterialSwitch(this);reduce.setId(R.id.reduce_motion_setting);reduce.setContentDescription(getString(R.string.reduce_motion));reduce.setChecked(preferences.getBoolean("reduce_motion",false));
+        reduce.setOnCheckedChangeListener((view,checked) -> {preferences.edit().putBoolean("reduce_motion",checked).apply();recreate();});motion.addView(reduce);appearance.addView(motion);
+        LinearLayout access=new GlassSection(this,content,R.string.privileged_access,R.drawable.ic_shield,"access",true).body;access.setPadding(0,0,0,Ui.dp(this,8));
         Ui.setting(this,access,R.drawable.ic_shield,R.string.advanced,getString(R.string.advanced_short),() -> advanced(null));
         Ui.setting(this,access,R.drawable.ic_settings,R.string.write_settings,null,() -> open(new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,Uri.parse("package:"+getPackageName()))));
-        Ui.section(this,content,R.string.about);
-        LinearLayout about=Ui.card(this,content);Ui.text(this,about,getString(R.string.title),22,true);
+        LinearLayout about=new GlassSection(this,content,R.string.about,R.drawable.ic_info,"about",false).body;Ui.text(this,about,getString(R.string.title),22,true);
         Ui.text(this,about,getString(R.string.version_value,BuildConfig.VERSION_NAME),13,false);
         Ui.text(this,about,getString(R.string.subtitle),14,false);Ui.text(this,about,getString(R.string.limits),13,false);
         Ui.text(this,about,getString(R.string.app_list_privacy),13,false);

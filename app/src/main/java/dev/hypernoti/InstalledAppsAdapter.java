@@ -37,15 +37,15 @@ final class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapt
     }
     @Override public int getItemCount(){return applications.size();}
     @Override public Holder onCreateViewHolder(ViewGroup parent,int type){
-        MaterialCardView card=new MaterialCardView(context);card.setRadius(Ui.dp(context,16));card.setCardElevation(0);card.setStrokeWidth(0);
-        card.setCardBackgroundColor(Ui.color(context,com.google.android.material.R.attr.colorSurfaceContainer));
+        MaterialCardView card=Glass.card(context,Ui.color(context,com.google.android.material.R.attr.colorSurfaceContainer));
+        Motion.tactile(card);
         RecyclerView.LayoutParams params=new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);params.bottomMargin=Ui.dp(context,8);card.setLayoutParams(params);
         LinearLayout row=Ui.row(context);row.setPadding(Ui.dp(context,16),Ui.dp(context,12),Ui.dp(context,8),Ui.dp(context,12));card.addView(row);
         ImageView icon=new ImageView(context);row.addView(icon,new LinearLayout.LayoutParams(Ui.dp(context,40),Ui.dp(context,40)));
         LinearLayout labels=Ui.column(context);labels.setPadding(Ui.dp(context,14),0,Ui.dp(context,4),0);row.addView(labels,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1));
         TextView title=Ui.text(context,labels,"",16,true);title.setMaxLines(2);title.setEllipsize(TextUtils.TruncateAt.END);
         TextView pkg=Ui.text(context,labels,"",12,false);pkg.setMaxLines(1);pkg.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-        MaterialButton action=new MaterialButton(context);
+        MaterialButton action=new MaterialButton(context);Motion.tactile(action);
         action.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.TRANSPARENT));action.setElevation(0);
         action.setIconTint(android.content.res.ColorStateList.valueOf(Ui.color(context,com.google.android.material.R.attr.colorOnSurfaceVariant)));
         action.setIconResource(R.drawable.ic_shield);action.setIconPadding(0);action.setIconSize(Ui.dp(context,22));action.setMinWidth(0);action.setMinimumWidth(0);action.setPadding(Ui.dp(context,12),0,Ui.dp(context,12),0);

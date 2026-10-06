@@ -7,7 +7,9 @@ Android English/Vietnamese setup assistant for FCM on Chinese HyperOS ROMs.
 - Detect whether Google Play services is installed and enabled.
 - Open its app settings, HyperOS autostart settings, battery settings, and application settings.
 - Provide a persistent setup checklist and instructions for real remote-push testing.
-- Material 3 interface inspired by the supplied KernelSU-Next APK: rounded tonal cards, a floating icon navigation bar, and consistent advanced controls. All HyperNoti UI code and icons remain specific to this project.
+- Liquid glass styling: translucent rounded cards, static pastel light fields, bright edge highlights and a floating navigation dock. Frosted appearance is drawn with gradients, without live backdrop capture or text blur.
+- Reversible 320 ms section expansion, 280 ms tab transitions and gentle touch feedback. A Reduce motion setting and Android animator settings disable the custom motion. No continuous decorative animation runs in the background.
+- Device, guide, appearance, access and about groups remember their expanded state. English/Vietnamese, light/dark/AMOLED and optional wallpaper colors remain supported.
 - Four pages: Home, Apps, Checklist, Settings. The app picker now has search and per-app advanced shortcuts.
 - System/light/dark/AMOLED appearance and optional Android 12+ wallpaper colors.
 - Switch between English and Vietnamese; initially follows device language. Checklist and language preferences from v0.1 are retained.

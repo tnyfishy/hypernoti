@@ -1,13 +1,15 @@
-HyperNoti 0.2.0 preview for Android 8.0+ / Bản thử nghiệm HyperNoti 0.2.0 cho Android 8.0 trở lên.
+HyperNoti 0.3.0 preview — Liquid glass / Kính trong mờ
 
-Giao diện mới lấy cảm hứng từ KernelSU-Next:
-- Thẻ Material 3 bo góc và thanh điều hướng nổi với bốn mục: Trang chủ, Ứng dụng, Checklist, Cài đặt.
-- Giao diện sáng, tối, đen AMOLED và màu theo hình nền trên Android 12+.
-- Danh sách ứng dụng có tìm kiếm và nút mở thao tác nâng cao theo ứng dụng.
-- Giữ Anh/Việt, checklist đã lưu và luồng xác nhận Shizuku/root.
+- Thẻ kính trong mờ, viền bắt sáng, nền chuyển sắc dịu và thanh điều hướng nổi.
+- Mở/thu các nhóm thông tin bằng animation 320 ms; chuyển tab 280 ms và phản hồi nhẹ khi chạm. Bấm nhanh để đảo chiều vẫn giữ đúng trạng thái cuối.
+- Nhớ trạng thái mở/thu các nhóm; giữ tìm kiếm và checklist khi chuyển tab.
+- Thêm Giảm chuyển động trong Cài đặt; hiệu ứng tùy chỉnh cũng tắt khi Android tắt animator.
+- Giữ tiếng Anh/Việt, sáng/tối/AMOLED, màu theo hình nền và xác nhận trước thao tác Shizuku/root.
 
-English: Material 3 redesign with rounded tonal cards, a floating four-tab navigation bar, searchable installed apps, system/light/dark/AMOLED appearance, and optional wallpaper colors. Existing language and checklist preferences are preserved. Root/Shizuku operations remain explicit and require confirmation.
+English: Translucent glass cards, soft gradient light fields, bright edge highlights and a floating navigation dock. Reversible section animations, tab transitions and touch feedback are supported; section state is remembered. Reduce motion and Android animator settings disable custom motion. Existing language, appearance, app search, checklist and privileged confirmation flows are preserved.
 
-Download **HyperNoti-preview.apk** below. The APK is debug-signed for direct testing. Version code has increased to support upgrades; it uses the same signing key as the earlier prepared preview APK. A different signing key would require uninstalling the previous installation.
+The glass appearance uses cached gradients and translucent surfaces, without live backdrop capture, text blur or continuous decorative animation.
 
-Host validation: APK build, 24 unit/UI/rendering tests, lint without errors, and signature verification. UI images are simulated Android renders, not physical HyperOS screenshots. Xiaomi autostart still uses the ROM settings screen. Real HyperOS FCM delivery and privileged command effects require device validation; this UI update does not guarantee FCM delivery.
+Download **HyperNoti-preview.apk** below. This preview is debug-signed with the same key as earlier releases. Version code 3 supports updating the existing installation.
+
+Validation: APK build, 29 unit/UI/rendering tests, lint without errors and APK signature verification. Included images are simulated Android renders. Animation frame rate and FCM behavior on a physical HyperOS device have not been measured.
