@@ -1,0 +1,7 @@
+Application source commit: c0a1d089f4bf7d9fc3e270a0ab5ccecc7cdb5b3c
+Version: 0.3.0 (versionCode 3)
+Host validation: assembleDebug succeeded; 29 tests passed, no skipped tests; lint had no errors; APK signature verified.
+UI renders: native Robolectric Android 9, English/Vietnamese resources, light/dark views and an expanded section. Screenshots are simulated renders.
+Physical HyperOS validation and animation frame-rate measurement: not performed.
+Glass: static cached gradients and translucent surfaces; no live backdrop capture or continuous decorative animation.
+Signer SHA-256: 0cf7d690193debd49c91eb39421bb854fbcf6ad4b6c9dc1fbe2ca37ad023a1d4 (same preview signer as 0.1.0 and 0.2.0).
