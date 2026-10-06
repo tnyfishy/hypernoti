@@ -13,7 +13,18 @@ jobs:
           java-version: '17'
           cache: gradle
       - name: Build, unit tests, and lint
-        run: ./gradlew --no-daemon --max-workers=2 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon --max-workers=2 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug 2>&1 | tee gradle-ci.log
+      - name: Record build diagnosis
+        if: steps.build.outcome == 'failure'
+        run: |
+          printf '```text\n' >> "$GITHUB_STEP_SUMMARY"
+          tail -c 16000 gradle-ci.log >> "$GITHUB_STEP_SUMMARY"
+          printf '\n```\n' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
       - uses: actions/upload-artifact@v4
         with:
           name: hypernoti-debug

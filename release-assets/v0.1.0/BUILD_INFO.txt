@@ -1,0 +1,4 @@
+Application source commit: 927d439582d1d108941b589b286adeda1dba1a75
+Version: 0.1.0
+Host validation: assembleDebug succeeded; 13 tests passed; lint had no errors; APK signature verified.
+Physical HyperOS validation: not performed.

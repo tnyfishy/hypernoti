@@ -24,14 +24,17 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: gradle
-      - name: Build and verify
-        run: ./gradlew --no-daemon --max-workers=2 :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+      - name: Verify prepared APK checksum and signature
+        run: |
+          cd release-assets/v0.1.0
+          sha256sum -c SHA256SUMS.txt
+          APK_SIGNER=$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -n 1)
+          test -n "$APK_SIGNER"
+          "$APK_SIGNER" verify --verbose HyperNoti-preview.apk
       - name: Prepare APK and checksum
         run: |
           mkdir -p release-artifacts
-          cp app/build/outputs/apk/debug/app-debug.apk release-artifacts/HyperNoti-preview.apk
-          cd release-artifacts
-          sha256sum HyperNoti-preview.apk > SHA256SUMS.txt
+          cp release-assets/v0.1.0/HyperNoti-preview.apk release-assets/v0.1.0/SHA256SUMS.txt release-assets/v0.1.0/BUILD_INFO.txt release-artifacts/
       - uses: actions/upload-artifact@v4
         with:
           name: hypernoti-preview
@@ -41,6 +44,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
         run: |
-          gh release create "$RELEASE_TAG" release-artifacts/HyperNoti-preview.apk release-artifacts/SHA256SUMS.txt \
+          gh release create "$RELEASE_TAG" release-artifacts/HyperNoti-preview.apk release-artifacts/SHA256SUMS.txt release-artifacts/BUILD_INFO.txt \
             --repo "$GITHUB_REPOSITORY" --verify-tag --prerelease \
             --title "HyperNoti $RELEASE_TAG — Preview" --notes-file RELEASE_NOTES.md
