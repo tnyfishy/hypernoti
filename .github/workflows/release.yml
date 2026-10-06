@@ -32,7 +32,7 @@ jobs:
             printf 'Invalid version tag\n' >&2
             exit 1
           fi
-          ASSET_DIR="release-assets/${BASH_REMATCH[1]}"
+          ASSET_DIR="release-assets/v${BASH_REMATCH[1]}"
           printf 'asset_dir=%s\n' "$ASSET_DIR" >> "$GITHUB_OUTPUT"
           cd "$ASSET_DIR"
           sha256sum -c SHA256SUMS.txt
@@ -45,6 +45,7 @@ jobs:
         run: |
           mkdir -p release-artifacts
           cp "$ASSET_DIR/HyperNoti-preview.apk" "$ASSET_DIR/SHA256SUMS.txt" "$ASSET_DIR/BUILD_INFO.txt" release-artifacts/
+          find "$ASSET_DIR" -maxdepth 1 -name '*.png' -exec cp '{}' release-artifacts/ ';'
       - uses: actions/upload-artifact@v4
         with:
           name: hypernoti-preview
@@ -54,6 +55,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
         run: |
-          gh release create "$RELEASE_TAG" release-artifacts/HyperNoti-preview.apk release-artifacts/SHA256SUMS.txt release-artifacts/BUILD_INFO.txt \
+          gh release create "$RELEASE_TAG" release-artifacts/* \
             --repo "$GITHUB_REPOSITORY" --verify-tag --prerelease \
             --title "HyperNoti $RELEASE_TAG — Preview" --notes-file RELEASE_NOTES.md
