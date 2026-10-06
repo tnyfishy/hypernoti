@@ -1,0 +1,18 @@
+<resources>
+ <style name="Theme.HyperNoti" parent="Theme.Material3.DayNight.NoActionBar">
+  <item name="colorPrimary">@color/hn_primary</item><item name="colorOnPrimary">@color/hn_on_primary</item>
+  <item name="colorSecondary">@color/hn_primary</item><item name="colorOnSecondary">@color/hn_on_primary</item>
+  <item name="android:colorBackground">@color/hn_background</item><item name="colorSurface">@color/hn_surface</item>
+  <item name="colorSurfaceContainer">@color/hn_container</item><item name="colorSurfaceVariant">@color/hn_container</item>
+  <item name="colorSecondaryContainer">@color/hn_secondary_container</item>
+  <item name="colorOnSecondaryContainer">@color/hn_on_surface</item><item name="colorOnSurface">@color/hn_on_surface</item>
+  <item name="colorOnSurfaceVariant">@color/hn_on_variant</item><item name="colorOutline">@color/hn_outline</item>
+  <item name="colorErrorContainer">@color/hn_error_container</item><item name="colorOnErrorContainer">@color/hn_on_error_container</item>
+  <item name="android:fontFamily">sans</item><item name="android:windowLightStatusBar">true</item>
+  <item name="android:statusBarColor">@android:color/transparent</item>
+  <item name="android:navigationBarColor">@android:color/transparent</item><item name="android:windowActionModeOverlay">true</item>
+ </style>
+ <style name="ThemeOverlay.HyperNoti.Amoled" parent="">
+  <item name="android:colorBackground">#000000</item><item name="colorSurface">#000000</item><item name="colorSurfaceContainer">#16171C</item>
+ </style>
+</resources>

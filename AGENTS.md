@@ -13,3 +13,5 @@ In the prepared cloud machine, source `/workspace/tooling/env.sh`, then run from
 Keep English and Vietnamese resources synchronized. The default workflow requires no Firebase credentials, root, or Shizuku. Advanced changes require explicit user selection and confirmation. Never claim that an installed package, accepted shell command, checklist state, or host test proves FCM delivery. Xiaomi autostart is separate from Android app operations; device-specific behavior must be validated on an actual HyperOS ROM.
 
 Validate package names before privileged commands. Do not add automatic root requests, a blanket security-service disable, arbitrary shell execution, uploads of installed-app lists, or persistent background processes without an explicit product requirement.
+
+The interface uses Material 3 views (UiActivity/Ui), with four tabs and a floating navigation bar. Preserve English/Vietnamese resources, accessibility labels, night-mode contrast, and explicit confirmation before privilege changes. Native rendering checks generate screenshots in app/build/screenshots; inspect them when changing layout or theme.

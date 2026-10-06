@@ -4,7 +4,7 @@
  <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
  <uses-permission android:name="moe.shizuku.manager.permission.API_V23"/>
  <queries><package android:name="com.google.android.gms"/><package android:name="com.android.vending"/></queries>
- <application android:label="HyperNoti" android:icon="@drawable/ic_hypernoti" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:supportsRtl="true">
+ <application android:label="HyperNoti" android:icon="@drawable/ic_hypernoti" android:theme="@style/Theme.HyperNoti" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:supportsRtl="true">
   <provider android:name="rikka.shizuku.ShizukuProvider" android:authorities="${applicationId}.shizuku" android:multiprocess="false" android:enabled="true" android:exported="true" android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"/>
   <activity android:name=".AdvancedActivity" android:exported="false"/>
   <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>

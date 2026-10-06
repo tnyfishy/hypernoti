@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,12 +37,14 @@ public class MainActivityTest {
  @Test public void checklistPersistsAcrossActivityRestart() {
   try (ActivityController<MainActivity> controller=Robolectric.buildActivity(MainActivity.class).setup()) {
    MainActivity activity=controller.get();
+   ((BottomNavigationView)activity.findViewById(R.id.main_navigation)).setSelectedItemId(R.id.nav_checklist);
    CheckBox check=(CheckBox)find(activity.getWindow().getDecorView(),activity.getString(R.string.check_google));
    check.setChecked(true);
    assertNotNull(find(activity.getWindow().getDecorView(),activity.getString(R.string.progress,1)));
   }
   try (ActivityController<MainActivity> controller=Robolectric.buildActivity(MainActivity.class).setup()) {
    MainActivity activity=controller.get();
+   ((BottomNavigationView)activity.findViewById(R.id.main_navigation)).setSelectedItemId(R.id.nav_checklist);
    assertTrue(((CheckBox)find(activity.getWindow().getDecorView(),activity.getString(R.string.check_google))).isChecked());
   }
  }

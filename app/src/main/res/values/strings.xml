@@ -23,7 +23,7 @@
  <string name="app_list_privacy">Installed application names are displayed only on this device and are not uploaded. Modify system settings is an optional user-granted permission for HyperNoti itself; it does not unlock autostart or grant privileged access.</string>
  <string name="loading_apps">Loading installed apps…</string>
  <string name="choose_mode">Choose Shizuku or root. No elevated action runs automatically.</string>
- <string name="root_mode">Root (requires su/Magisk)</string>
+ <string name="root_mode">Root (requires su / Magisk / KernelSU)</string>
  <string name="connect_shizuku">Connect / authorize Shizuku</string>
  <string name="write_settings">Optional: grant modify system settings</string>
  <string name="selected_settings">Open selected app settings</string>
@@ -38,7 +38,54 @@
  <string name="confirm_reset">Remove this app from the user Doze allowlist and set RUN_ANY_IN_BACKGROUND to default? This does not restore previous custom settings, and may remove an exemption added by another tool.</string>
  <string name="executing">Executing explicit request…</string>
  <string name="verify_device">Inspect all exit codes: one change can succeed while another fails. Test real FCM on your device; command acceptance is not proof of delivery.</string>
- <string name="language_selector" translatable="false">English / Tiếng Việt</string>
  <string name="operation_failed_detail">Operation failed\n%1$s</string>
  <string name="command_result_detail">Command result (exit=0 indicates command acceptance):\n%1$s\n%2$s</string>
+ <string name="nav_home">Home</string>
+ <string name="nav_apps">Apps</string>
+ <string name="nav_checklist">Checklist</string>
+ <string name="nav_settings">Settings</string>
+ <string name="default_mode">Default mode · No elevated action</string>
+ <string name="setup_overview">Setup overview</string>
+ <string name="setup_title">Notification setup</string>
+ <string name="continue_setup">Continue setup</string>
+ <string name="device_information">Device information</string>
+ <string name="device">Device</string>
+ <string name="android_version">Android version</string>
+ <string name="rom">Build / ROM</string>
+ <string name="app_version">App version</string>
+ <string name="android_version_value">Android %1$s · API %2$d</string>
+ <string name="privileged_access">Advanced access</string>
+ <string name="advanced_short">Choose an app and authorize Shizuku or root only when you need it.</string>
+ <string name="about_delivery">About FCM delivery</string>
+ <string name="quick_settings">System shortcuts</string>
+ <string name="search_apps">Search apps or packages</string>
+ <string name="apps_help">Tap an app for system settings. Tap its shield for advanced actions.</string>
+ <string name="count_value">%1$d</string>
+ <string name="step_count">%1$d / 4</string>
+ <string name="loading_count">—</string>
+ <string name="no_apps">No matching apps</string>
+ <string name="apps_load_failed">Unable to load apps. Try refreshing.</string>
+ <string name="app_advanced_description">Advanced settings for %1$s</string>
+ <string name="appearance_section">Personalization</string>
+ <string name="language">Language</string>
+ <string name="appearance">Appearance</string>
+ <string name="system_default">Follow system</string>
+ <string name="theme_light">Light</string>
+ <string name="theme_dark">Dark</string>
+ <string name="theme_amoled">AMOLED black</string>
+ <string name="dynamic_colors">Wallpaper colors</string>
+ <string name="dynamic_colors_summary">Use your system color palette</string>
+ <string name="dynamic_colors_unavailable">Available on Android 12 and later</string>
+ <string name="about">About</string>
+ <string name="version_value">Version %1$s · Preview</string>
+ <string name="status_refreshed">Status refreshed</string>
+ <string name="execution_method">Execution method</string>
+ <string name="target_app">Selected app</string>
+ <string name="background_actions">Background permissions</string>
+ <string name="session_status">Session status</string>
+ <string name="root_label">Root</string>
+ <string name="understand_changes">What will change?</string>
+ <string name="advanced_help_detail">%1$s\n\n%2$s</string>
+<plurals name="app_count"><item quantity="one">%1$d app</item><item quantity="other">%1$d apps</item></plurals>
+<string name="shizuku_label" translatable="false">Shizuku</string>
 </resources>

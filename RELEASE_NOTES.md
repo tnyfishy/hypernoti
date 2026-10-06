@@ -1,12 +1,13 @@
-HyperNoti preview for Android 8.0+ / Bản thử nghiệm HyperNoti cho Android 8.0 trở lên.
+HyperNoti 0.2.0 preview for Android 8.0+ / Bản thử nghiệm HyperNoti 0.2.0 cho Android 8.0 trở lên.
 
-- English and Vietnamese interface / Giao diện Anh và Việt.
-- Google Play services detection, installed-app picker, and persistent configuration checklist.
-- Default mode needs no root. Advanced mode supports explicit Shizuku or root requests for Android Doze exemption and background app operations.
-- Xiaomi autostart is configured through the HyperOS settings screen; automatic Xiaomi-specific permission changes are not implemented.
+Giao diện mới lấy cảm hứng từ KernelSU-Next:
+- Thẻ Material 3 bo góc và thanh điều hướng nổi với bốn mục: Trang chủ, Ứng dụng, Checklist, Cài đặt.
+- Giao diện sáng, tối, đen AMOLED và màu theo hình nền trên Android 12+.
+- Danh sách ứng dụng có tìm kiếm và nút mở thao tác nâng cao theo ứng dụng.
+- Giữ Anh/Việt, checklist đã lưu và luồng xác nhận Shizuku/root.
 
-Download **HyperNoti-preview.apk** below. This is a debug-signed APK for direct testing, not a production release. Preview build signing keys may differ between builds; updating across different keys requires uninstalling the previous APK, which clears its checklist.
+English: Material 3 redesign with rounded tonal cards, a floating four-tab navigation bar, searchable installed apps, system/light/dark/AMOLED appearance, and optional wallpaper colors. Existing language and checklist preferences are preserved. Root/Shizuku operations remain explicit and require confirmation.
 
-Host validation: APK build and 13 unit/UI tests passed; lint has no errors. QUERY_ALL_PACKAGES has a documented, narrowly scoped lint exemption for this app-management tool. Real HyperOS FCM delivery, Shizuku effects and root-manager consent have not been verified on physical hardware. Accepted commands and checklist state do not prove FCM delivery.
+Download **HyperNoti-preview.apk** below. The APK is debug-signed for direct testing. Version code has increased to support upgrades; it uses the same signing key as the earlier prepared preview APK. A different signing key would require uninstalling the previous installation.
 
-Tải **HyperNoti-preview.apk** ở phần Assets. Đây là APK ký debug để thử nghiệm. Mặc định không cần root; chỉ yêu cầu Shizuku/root khi bạn chọn thao tác nâng cao và xác nhận. Bản này không bảo đảm giữ Google Play services luôn sống hoặc nhận FCM trên mọi ROM. Hãy kiểm tra thông báo thật khi tắt màn hình, sau thời gian chờ và sau reboot theo README.
+Host validation: APK build, 24 unit/UI/rendering tests, lint without errors, and signature verification. UI images are simulated Android renders, not physical HyperOS screenshots. Xiaomi autostart still uses the ROM settings screen. Real HyperOS FCM delivery and privileged command effects require device validation; this UI update does not guarantee FCM delivery.

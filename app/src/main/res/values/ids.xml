@@ -1,0 +1,6 @@
+<resources>
+ <item name="nav_home" type="id"/><item name="nav_apps" type="id"/><item name="nav_checklist" type="id"/><item name="nav_settings" type="id"/>
+ <item name="main_navigation" type="id"/><item name="app_search" type="id"/><item name="app_list" type="id"/>
+ <item name="theme_setting" type="id"/><item name="language_setting" type="id"/><item name="dynamic_color_setting" type="id"/>
+ <item name="root_mode_button" type="id"/><item name="shizuku_mode_button" type="id"/>
+</resources>

@@ -2,12 +2,15 @@
 
 Android English/Vietnamese setup assistant for FCM on Chinese HyperOS ROMs.
 
-## Scope of v0.1
+## Scope of v0.2
 
 - Detect whether Google Play services is installed and enabled.
 - Open its app settings, HyperOS autostart settings, battery settings, and application settings.
 - Provide a persistent setup checklist and instructions for real remote-push testing.
-- Switch between English and Vietnamese; initially follows device language.
+- Material 3 interface inspired by the supplied KernelSU-Next APK: rounded tonal cards, a floating icon navigation bar, and consistent advanced controls. All HyperNoti UI code and icons remain specific to this project.
+- Four pages: Home, Apps, Checklist, Settings. The app picker now has search and per-app advanced shortcuts.
+- System/light/dark/AMOLED appearance and optional Android 12+ wallpaper colors.
+- Switch between English and Vietnamese; initially follows device language. Checklist and language preferences from v0.1 are retained.
 - List installed applications locally, including Google Play services and system apps.
 - Optional Shizuku user service or explicit `su`/Magisk mode: request a Doze allowlist entry and set `RUN_ANY_IN_BACKGROUND` to `allow` for the selected package.
 - Remove the user Doze exemption and reset the app operation to `default`, with an explicit warning that this is not restoration of previous custom settings.
@@ -53,4 +56,8 @@ The prepared instance uses `/workspace/tooling/env.sh` for JDK, SDK, proxy, and 
 
 ## Publishing the preview
 
-Pushing an existing `v*` tag starts `.github/workflows/release.yml`. It verifies the checksum and APK signature of the prepared, host-tested APK in `release-assets/v0.1.0`, then publishes a GitHub prerelease with the APK, SHA-256 checksum, and build provenance. Development CI rebuilds and tests the source separately. Update the prepared APK, checksum and build information together for subsequent versions. The workflow can also be started manually with an existing tag. It requires Actions to be enabled and the repository workflow token to have contents-write permission. See RELEASE_NOTES.md for preview limitations.
+Pushing an existing `v*` tag starts `.github/workflows/release.yml`. It verifies the checksum and APK signature of the prepared, host-tested APK in `release-assets/<version>`, then publishes a GitHub prerelease with the APK, SHA-256 checksum, and build provenance. Development CI rebuilds and tests the source separately. Update the prepared APK, checksum and build information together for subsequent versions. The workflow can also be started manually with an existing tag. It requires Actions to be enabled and the repository workflow token to have contents-write permission. See RELEASE_NOTES.md for preview limitations.
+
+## UI verification
+
+Host checks cover tab restoration, search state across tab changes, language switching and persistence, dark and AMOLED resources, selected app handoff, explicit root confirmation/cancel, and missing-Shizuku behavior. Native Robolectric rendering writes light/dark screenshots under `app/build/screenshots`; these are simulated Android renders, not screenshots from a HyperOS phone. Privileged commands are not executed by UI tests. Material card/button contrast and safe system/keyboard insets are handled by the shared `Ui`/`UiActivity` components.

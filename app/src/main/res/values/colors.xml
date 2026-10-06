@@ -1,0 +1,8 @@
+<resources>
+ <color name="hn_primary">#47639B</color><color name="hn_on_primary">#FFFFFF</color>
+ <color name="hn_background">#FBF8FC</color><color name="hn_surface">#FBF8FC</color>
+ <color name="hn_container">#F0EDF4</color><color name="hn_secondary_container">#E1E4F3</color>
+ <color name="hn_on_surface">#1C1B20</color><color name="hn_on_variant">#47464F</color>
+ <color name="hn_outline">#787680</color><color name="hn_error_container">#FFDAD6</color>
+ <color name="hn_on_error_container">#410002</color>
+</resources>
